@@ -5,7 +5,9 @@
  *  William Morris <morris@ee.ccny.cuny.edu>
  *  Gautier Dumonteil <gautier.dumonteil@gmail.com>
  *  http://robotics.ccny.cuny.edu
- *
+ *  
+ *  Modified by Ed Kelley 2013 
+ *  
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -51,6 +53,14 @@ namespace ar_pose
     if (!n_param.getParam ("publish_visual_markers", publishVisualMarkers_))
       publishVisualMarkers_ = true;
     ROS_INFO ("\tPublish visual markers: %d", publishVisualMarkers_);
+
+    if (!n_param.getParam("camera_image_topic", cameraImageTopic_))
+      cameraImageTopic_ = "/usb_cam/image_raw";
+    ROS_INFO ("\tCamera image topic: %s", cameraImageTopic_.c_str());
+
+    if (!n_param.getParam("camera_info_topic", cameraInfoTopic_))
+      cameraInfoTopic_  = "/usb_cam/camera_info";
+    ROS_INFO ("\tCamera info topic: %s", cameraInfoTopic_.c_str());
 
     if (!n_param.getParam ("threshold", threshold_))
       threshold_ = 100;
@@ -205,7 +215,8 @@ namespace ar_pose
 
       double arQuat[4], arPos[3];
 
-      //arUtilMatInv (object[i].trans, cam_trans);
+      arUtilMatInv (object[i].trans, cam_trans);
+      
       arUtilMat2QuatPos (object[i].trans, arQuat, arPos);
 
       // **** convert to ROS frame
@@ -221,9 +232,11 @@ namespace ar_pose
       quat[2] = -arQuat[2];
       quat[3] = arQuat[3];
 
-      ROS_DEBUG (" Object num %i ------------------------------------------------", i);
-      ROS_DEBUG (" QUAT: Pos x: %3.5f  y: %3.5f  z: %3.5f", pos[0], pos[1], pos[2]);
-      ROS_DEBUG ("     Quat qx: %3.5f qy: %3.5f qz: %3.5f qw: %3.5f", quat[0], quat[1], quat[2], quat[3]);
+
+
+      ROS_INFO (" Object num %i ------------------------------------------------", i);
+      ROS_INFO (" QUAT: Pos x: %3.5f  y: %3.5f  z: %3.5f", pos[0], pos[1], pos[2]);
+      ROS_INFO ("     Quat qx: %3.5f qy: %3.5f qz: %3.5f qw: %3.5f", quat[0], quat[1], quat[2], quat[3]);
 
       // **** publish the marker
 

@@ -46,8 +46,8 @@
 
 #include <ar_pose/ARMarker.h>
 
-const std::string cameraImageTopic_ = "/usb_cam/image_raw";
-const std::string cameraInfoTopic_  = "/usb_cam/camera_info";
+std::string cameraImageTopic_ = "/usb_cam/image_raw";
+std::string cameraInfoTopic_  = "/usb_cam/camera_info";
 
 const double AR_TO_ROS = 0.001;
 

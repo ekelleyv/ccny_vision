@@ -65,6 +65,14 @@ namespace ar_pose
       reverse_transform_ = false;
     ROS_INFO("\tReverse Transform: %d", reverse_transform_);
 
+    if (!n_param.getParam("camera_image_topic", cameraImageTopic_))
+      cameraImageTopic_ = "/usb_cam/image_raw";
+    ROS_INFO ("\tCamera image topic: %s", cameraImageTopic_.c_str());
+
+    if (!n_param.getParam("camera_info_topic", cameraInfoTopic_))
+      cameraInfoTopic_  = "/usb_cam/camera_info";
+    ROS_INFO ("\tCamera info topic: %s", cameraInfoTopic_.c_str());
+
     if (!n_param.getParam("marker_frame", markerFrame_))
       markerFrame_ = "ar_marker";
     ROS_INFO ("\tMarker frame: %s", markerFrame_.c_str());
@@ -204,6 +212,7 @@ namespace ar_pose
     k = -1;
     for (i = 0; i < marker_num; i++)
     {
+      ROS_ERROR ("Found pattern %d ", marker_info[i].id);
       if (marker_info[i].id == patt_id_)
       {
         ROS_DEBUG ("Found pattern: %d ", patt_id_);

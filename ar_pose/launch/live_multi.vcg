@@ -5,7 +5,7 @@ Fixed\ Frame=/world
 Target\ Frame=<Fixed Frame>
 Camera.Alpha=0.5
 Camera.Enabled=1
-Camera.Image\ Topic=/usb_cam/image_raw
+Camera.Image\ Topic=/ardrone/bottom/image_raw
 Grid.Alpha=0.5
 Grid.Cell\ Size=1
 Grid.ColorR=0.654902
@@ -34,7 +34,7 @@ Tool\ 2D\ Nav\ GoalTopic=goal
 Tool\ 2D\ Pose\ EstimateTopic=initialpose
 Camera\ Type=rviz::OrbitViewController
 Camera\ Config=1.07693 0.461088 5.5806 0 0 0
-Property\ Grid\ State=selection=Target Frame;expanded=.Global Options,TF./ar_marker/ar_marker,TF./usb_cam/usb_cam,TF./ar_markerTree/ar_marker,TF./usb_camTree/usb_cam,Markers.Enabled.Markers.StatusTopStatus,Markers.Enabled.Markers.Namespaces;scrollpos=0,0;splitterpos=133,266;ispageselected=1
+Property\ Grid\ State=selection=Target Frame;expanded=.Global Options,TF./ar_marker/ar_marker,TF./ardrone_bottom_link,TF./ar_markerTree/ar_marker,TF./usb_camTree/usb_cam,Markers.Enabled.Markers.StatusTopStatus,Markers.Enabled.Markers.Namespaces;scrollpos=0,0;splitterpos=133,266;ispageselected=1
 [Display0]
 Name=TF
 Package=rviz

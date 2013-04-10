@@ -59,7 +59,6 @@ namespace ar_object
       fclose (fp);
       ROS_BREAK ();
     }
-
     ROS_INFO ("About to load %d Models", *objectnum);
 
     object = (ObjectData_T *) malloc (sizeof (ObjectData_T) * *objectnum);
