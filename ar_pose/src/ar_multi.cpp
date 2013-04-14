@@ -215,7 +215,7 @@ namespace ar_pose
 
       double arQuat[4], arPos[3];
 
-      arUtilMatInv (object[i].trans, cam_trans);
+      // arUtilMatInv (object[i].trans, cam_trans);
       
       arUtilMat2QuatPos (object[i].trans, arQuat, arPos);
 
